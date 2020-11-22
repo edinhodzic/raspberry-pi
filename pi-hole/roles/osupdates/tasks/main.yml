@@ -1,0 +1,20 @@
+---
+# Some OS housekeeping by ensuring the package manager is up to date and clean.
+
+- name: Update operating system indexes
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: Upgrade operating system
+  apt:
+    upgrade: full
+    update_cache: yes
+
+- name: Remove useless packages from the cache
+  apt:
+    autoclean: yes
+
+- name: Remove dependencies that are no longer required
+  apt:
+    autoremove: yes

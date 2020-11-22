@@ -1,0 +1,8 @@
+---
+# This playbook installs Docker with a PiHole container.
+
+- hosts: pi
+  remote_user: pi
+  become: yes
+  roles:
+    - osupdates
