@@ -1,0 +1,29 @@
+---
+# Setup docker and any dependencies.
+
+- name: Ensure Docker GPG key is available
+# TODO consider moving this and any other raspbian specific tasks out of here
+  apt_key:
+    url: https://download.docker.com/linux/raspbian/gpg
+    state: present
+
+- name: Ensure Docker registry is available
+  apt_repository:
+    repo: deb https://download.docker.com/linux/raspbian buster stable
+    state: present
+
+- name: Ensure Docker and dependencies are available
+  apt:
+    name:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: Ensure Python comaptability with Docker
+  apt:
+    name: python3-docker
+    state: present
+
