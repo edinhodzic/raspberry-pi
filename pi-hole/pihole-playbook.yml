@@ -12,3 +12,9 @@
     - osupdates
     - docker
     - pihole
+    - { role: permissions, target_file: "/usr/bin/docker", user_group: "docker", user_name: "pi" }
+
+# TODO disable root login
+# TODO fail2ban
+# TODO ufw
+# TODO nordvpn

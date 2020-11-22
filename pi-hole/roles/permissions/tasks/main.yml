@@ -1,0 +1,17 @@
+---
+# A dumping ground for permission related stuff which doesn't have a definite home.
+
+- name: Ensure '{{ user_group }}' group exists
+  group:
+    name: "{{ user_group }}"
+    state: present
+
+- name: Ensure '{{ target_file }}' is in '{{ user_group }}' group
+  file:
+    path: "{{ target_file }}"
+    group: "{{ user_group }}"
+
+- name: Add user '{{ user_name }}' to '{{ user_group }}' group
+  user:
+    name: "{{ user_name }}"
+    group: "{{ user_group }}"
