@@ -4,6 +4,11 @@
 - hosts: pi
   remote_user: pi
   become: yes
+  vars:
+    pihole_conditional_forwarding: "true"
+    pihole_conditional_forwarding_ip: "192.168.1.1"
+    pihole_conditional_forwarding_domain: "local"
   roles:
     - osupdates
     - docker
+    - pihole
