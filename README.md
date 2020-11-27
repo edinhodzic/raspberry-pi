@@ -1,3 +1,3 @@
 # Raspberry Pi
 
-Just playing around with Rasperry Pi.
+Just playing around with Raspberry Pi.
