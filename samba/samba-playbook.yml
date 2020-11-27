@@ -1,0 +1,43 @@
+---
+# This playbook installs Samba and configures it to share a directory.
+
+- hosts: pi
+  remote_user: pi
+  become: yes
+  vars:
+    samba_user: "pi"
+    samba_share_directory: "/home/pi/samba-share"
+    samba_config_directory: "/etc/samba/smb.conf"
+  tasks:
+    - name: Ensure Samba and dependencies are available
+      apt:
+        name:
+          - samba
+          - samba-common-bin
+        state: present
+        update_cache: yes
+        cache_valid_time: 3600
+    - name: Ensure shared directory is available
+      file:
+        path: "{{ samba_share_directory }}"
+        state: directory
+        mode: "1777" #
+    - name: Ensure Samba configuration is available
+      blockinfile:
+        path: "{{ samba_config_directory }}"
+        # below, public=yes so that connection without credentials is possible
+        block: |
+          [share]
+          path = "{{ samba_share_directory }}"
+          writeable=Yes
+          create mask=1777
+          directory mask=1777
+          public=yes
+    - name: Ensure a samba user "{{ samba_user }}" exists without a password
+      # a bit hacky, not idempotent but there you go, hopefully someone writes an Ansible module for Samba
+      shell: smbpasswd -a -s -n "{{ samba_user }}"
+    - name: Restart Samba daemon
+      systemd:
+        state: restarted
+        daemon_reload: yes
+        name: smbd
