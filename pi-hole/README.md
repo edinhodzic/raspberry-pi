@@ -40,3 +40,9 @@ ansible-playbook 2.10.3
   python version = 3.9.0 (default, Oct 27 2020, 14:15:17) [Clang 12.0.0 (clang-1200.0.32.21)]
   ...
 ```
+
+# Not automated
+
+On the router:
+- static IP for RasPi
+- primary DNS set to RasPi IP
