@@ -20,7 +20,7 @@ ansible-playbook 2.10.3
 
 On the Mac:
 - open Finder
-- shortcut CMD+K
+- press shortcut &#8984;+<kbd>K</kbd>
 - enter `smb://raspberrypi.local/share` as the server address
 - enter `pi` as the user and omit the password
 - anything created on the share can be seen by both Mac and ~~Cheese~~ Pi
