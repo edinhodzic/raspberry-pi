@@ -25,3 +25,7 @@ On the Mac:
 - enter `pi` as the user and omit the password
 - anything created on the share can be seen by both Mac and ~~Cheese~~ Pi
 - Bob's your uncle
+
+# In Hindsight
+
+Using [Remote GPIO](https://gpiozero.readthedocs.io/en/stable/remote_gpio.html) might have been easier, that's an Ansible recipe for another day.
