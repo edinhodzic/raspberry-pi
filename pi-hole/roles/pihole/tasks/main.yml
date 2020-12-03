@@ -11,10 +11,11 @@
     path: /data/pihole/etc-dnsmasqd
     state: directory
 
-- name: Ensure pihole docker container is running
+- name: Ensure latest pihole docker container is running
   community.general.docker_container:
     name: pihole
     image: pihole/pihole:latest
+    pull: true # Always pull latest image. Otherwise, will only pull an image when missing.
     published_ports:
       - '53:53/tcp'
       - '53:53/udp'
